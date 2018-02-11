@@ -1,3 +1,4 @@
+/*---------------------------------Buttons------------------------------------*/
 #buttonMenu{
     -fx-font: 13px "Roboto";
     -fx-text-fill: #ffffff;
@@ -7,21 +8,68 @@
     -fx-focus-traversable: false;
 }
 
-#buttonMenu:hover {
-        -fx-font: 15px "Roboto";
-        -fx-cursor: hand;
-        -fx-text-fill: #ffffff;
-        -fx-background-color: #0690e0;
-        -fx-background-radius: 0;
-    }
+#buttonMenu:hover{
+    -fx-font: 15px "Roboto";
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #0690e0;
+    -fx-background-radius: 0;
+}
     
+#btnAdd{
+    -fx-font: 13px "Roboto Bk";
+    -fx-background-color: #00d800;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+#btnEmpty{
+    -fx-font: 13px "Roboto Bk";
+    -fx-background-color: #f9bb00;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+#btnCalculate{
+    -fx-font: 13px "Roboto Bk";
+    -fx-background-color: #0d3781;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    
+}
+/*-------------------------------Containers-----------------------------------*/
 #menuBox{
     -fx-background-color: #0d3781;
     -fx-spacing: 4;
 }
 
+#dataTable{
+    -fx-focus-traversable: false;
+}
+/*---------------------------------Labels-------------------------------------*/
 #lblNameStudent{
     -fx-font: 13px "Roboto";
-    -fx-text-fill: #ffffff;
-    -fx-alignment: CENTER_RIGHT;
+    -fx-text-fill: #64c4fc;
+    -fx-alignment: CENTER;
 }
+
+#lblMonomial{
+    -fx-font: 17px "Roboto";
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+}
+
+#lblFunction{
+    -fx-font: 17px "Roboto";
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+}
+/*-------------------------------Text Fields----------------------------------*/
+#txtNumber{
+    -fx-font: 17px "Roboto";
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+    -fx-focus-traversable: false;
+}
+
+
