@@ -1,0 +1,27 @@
+#buttonMenu{
+    -fx-font: 13px "Roboto";
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #0d3781;
+    -fx-background-radius: 0;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-focus-traversable: false;
+}
+
+#buttonMenu:hover {
+        -fx-font: 15px "Roboto";
+        -fx-cursor: hand;
+        -fx-text-fill: #ffffff;
+        -fx-background-color: #0690e0;
+        -fx-background-radius: 0;
+    }
+    
+#menuBox{
+    -fx-background-color: #0d3781;
+    -fx-spacing: 4;
+}
+
+#lblNameStudent{
+    -fx-font: 13px "Roboto";
+    -fx-text-fill: #ffffff;
+    -fx-alignment: CENTER_RIGHT;
+}
