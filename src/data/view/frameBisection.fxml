@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="data.view.FrameBisectionController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="1156.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox id="dataBox" alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="761.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="lblDataStudent" prefHeight="17.0" text="Biseccón    |    Enrique Alexis Ozaeta Medrano    |    16540291    |    Ingeniería en Sistemas Computacionales    |    Métodos Numéricos    |    Ruben Quintana">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <HBox alignment="CENTER" prefHeight="112.0" prefWidth="773.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="112.0" prefWidth="1151.0">
+                           <children>
+                              <Label id="lblMonomial" layoutX="244.0" layoutY="40.0" text="x^" />
+                              <JFXTextField id="txtNumber" fx:id="txtConstant" layoutX="184.0" layoutY="28.0" maxWidth="74.0" minWidth="50.0" prefHeight="31.0" prefWidth="60.0" promptText="4" />
+                              <JFXTextField id="txtNumber" fx:id="txtExponent" layoutX="260.0" layoutY="28.0" maxWidth="74.0" minWidth="60.0" prefHeight="31.0" prefWidth="60.0" promptText="2" />
+                              <JFXButton id="btnAdd" fx:id="btnAdd" focusTraversable="false" layoutX="427.0" layoutY="34.0" onAction="#clickAdd" prefWidth="66.0" text="Agregar" />
+                              <JFXButton id="btnEmpty" fx:id="btnEmpty" focusTraversable="false" layoutX="840.0" layoutY="34.0" onAction="#clickEmpty" prefWidth="66.0" text="Vaciar" />
+                              <Label id="lblFunction" fx:id="lblFunction" layoutX="193.0" layoutY="75.0" prefHeight="20.0" prefWidth="645.0" text="f(x) =" />
+                              <Label id="lblMonomial" layoutX="504.0" layoutY="36.0" text="Xa =" />
+                              <JFXTextField id="txtNumber" fx:id="txtXa" layoutX="537.0" layoutY="27.0" maxWidth="74.0" minWidth="60.0" prefHeight="31.0" prefWidth="60.0" promptText="-2" />
+                              <Label id="lblMonomial" layoutX="605.0" layoutY="36.0" text="Xb =" />
+                              <JFXTextField id="txtNumber" fx:id="txtXb" layoutX="640.0" layoutY="27.0" maxWidth="74.0" minWidth="60.0" prefHeight="31.0" prefWidth="60.0" promptText="-1" />
+                              <JFXButton id="btnCalculate" fx:id="btnCalculate" focusTraversable="false" layoutX="917.0" layoutY="34.0" onAction="#clickCalculate" text="Calcular" />
+                              <Label id="lblMonomial" layoutX="709.0" layoutY="37.0" text="Error =" />
+                              <JFXTextField id="txtNumber" fx:id="txtError" layoutX="760.0" layoutY="28.0" maxWidth="80.0" minWidth="60.0" prefHeight="38.0" prefWidth="80.0" promptText="0.001" />
+                              <JFXComboBox fx:id="cboxSign" layoutX="336.0" layoutY="34.0" prefHeight="25.0" prefWidth="65.0" promptText="+/-" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <TableView id="tblData" fx:id="tblData" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn fx:id="columnIteration" prefWidth="75.0" text="Iteration" />
+                      <TableColumn fx:id="columnXa" prefWidth="75.0" text="Xa" />
+                        <TableColumn fx:id="columnXb" prefWidth="75.0" text="Xb" />
+                        <TableColumn fx:id="columnfxa" prefWidth="75.0" text="f(Xa)" />
+                        <TableColumn fx:id="columnfxb" prefWidth="75.0" text="f(Xb)" />
+                        <TableColumn fx:id="columnXr" prefWidth="75.0" text="Xr" />
+                        <TableColumn fx:id="columnError" prefWidth="75.0" text="Error (%)" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </center>
+         <bottom>
+            <AnchorPane id="resultAP" prefHeight="47.0" prefWidth="1156.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="lblResult" fx:id="lblResult" layoutY="6.0" prefHeight="44.0" prefWidth="1156.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

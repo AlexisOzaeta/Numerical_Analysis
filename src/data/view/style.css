@@ -38,18 +38,23 @@
     
 }
 /*-------------------------------Containers-----------------------------------*/
-#menuBox{
+#dataBox{
     -fx-background-color: #0d3781;
     -fx-spacing: 4;
 }
-
-#dataTable{
-    -fx-focus-traversable: false;
+#resultAP{
+    -fx-background-color: #0d3781;
 }
 /*---------------------------------Labels-------------------------------------*/
-#lblNameStudent{
+#lblDataStudent{
     -fx-font: 13px "Roboto";
-    -fx-text-fill: #64c4fc;
+    -fx-text-fill: #ffffff;
+    -fx-alignment: CENTER;
+}
+
+#lblResult{
+    -fx-font: 15px "Roboto";
+    -fx-text-fill: #ffffff;
     -fx-alignment: CENTER;
 }
 
@@ -62,7 +67,7 @@
 #lblFunction{
     -fx-font: 17px "Roboto";
     -fx-text-fill: #000000;
-    -fx-alignment: CENTER;
+    -fx-alignment: CENTER_LEFT;
 }
 /*-------------------------------Text Fields----------------------------------*/
 #txtNumber{
@@ -72,4 +77,20 @@
     -fx-focus-traversable: false;
 }
 
+.centeredTextArea .scroll-pane .content .text {
+    -fx-text-alignment: center;
+}
+
+#txtArea{
+    -fx-font: 15px "Roboto";
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+}
+/*-------------------------------Text Fields----------------------------------*/
+#tblData{
+    -fx-alignment: CENTER;
+    -fx-font: 12px "Roboto";
+    -fx-text-fill: #000000;
+    -fx-focus-traversable: false;
+}
 
