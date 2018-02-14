@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import data.model.Iteration;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +25,8 @@ public class FrameBisectionController implements Initializable{
     main Main;
     int position = 0;
     String function = "f(x) =";
+    ArrayList<Double> constantt = new ArrayList<>();
+    ArrayList<Double> exponentt = new ArrayList<>();
     double[] constant = new double[1];
     double[] exponent = new double[1];
     String[] sign = new String[1];
@@ -37,34 +40,43 @@ public class FrameBisectionController implements Initializable{
     @FXML
     private void clickAdd(){
         if(verifyMonomial() == true){
-            if(position > 0){
-                    double[] constantAux = new double[this.constant.length];
-                    double[] exponentAux = new double[this.exponent.length];
-                    String[] signAux = new String[this.sign.length];
-
-                    System.arraycopy(this.constant, 0, constantAux, 0, this.constant.length);
-                    System.arraycopy(this.exponent, 0, exponentAux, 0, this.exponent.length);
-                    System.arraycopy(this.sign, 0, signAux, 0, this.sign.length);
-
-                    this.constant = new double[position + 1];
-                    this.exponent = new double[position + 1];
-                    this.sign = new String[position + 1];
-
-                    System.arraycopy(constantAux, 0, this.constant, 0, constantAux.length);
-                    System.arraycopy(exponentAux, 0, this.exponent, 0, exponentAux.length);
-                    System.arraycopy(signAux, 0, this.sign, 0, signAux.length);
-            }        
-
-            this.constant[position] = Double.parseDouble(txtConstant.getText());
-            this.exponent[position] = Double.parseDouble(txtExponent.getText());
-            this.sign[position] = cboxSign.getValue();
-
-            function += " "+constant[position]+"x^"+exponent[position]+" "+sign[position];
+//            if(position > 0){
+//                    double[] constantAux = new double[this.constant.length];
+//                    double[] exponentAux = new double[this.exponent.length];
+//                    String[] signAux = new String[this.sign.length];
+//
+//                    System.arraycopy(this.constant, 0, constantAux, 0, this.constant.length);
+//                    System.arraycopy(this.exponent, 0, exponentAux, 0, this.exponent.length);
+//                    System.arraycopy(this.sign, 0, signAux, 0, this.sign.length);
+//
+//                    this.constant = new double[position + 1];
+//                    this.exponent = new double[position + 1];
+//                    this.sign = new String[position + 1];
+//
+//                    System.arraycopy(constantAux, 0, this.constant, 0, constantAux.length);
+//                    System.arraycopy(exponentAux, 0, this.exponent, 0, exponentAux.length);
+//                    System.arraycopy(signAux, 0, this.sign, 0, signAux.length);
+//            }        
+//
+//            this.constant[position] = Double.parseDouble(txtConstant.getText());
+//            this.exponent[position] = Double.parseDouble(txtExponent.getText());
+//            this.sign[position] = cboxSign.getValue();
+//
+//            function += " "+constant[position]+"x^"+exponent[position]+" "+sign[position];
+//            lblFunction.setText(function);
+//            
+//            if("= 0".equals(this.sign[position]))
+//                btnAdd.setDisable(true);
+//            
+            this.constantt.add(Double.parseDouble(txtConstant.getText()));
+            this.exponentt.add(Double.parseDouble(txtExponent.getText()));
+            
+            if(position == 0)
+                function += " ("+constantt.get(position)+"x^"+exponentt.get(position)+") ";
+            else
+                function += "+ ("+constantt.get(position)+"x^"+exponentt.get(position)+") ";
             lblFunction.setText(function);
-            
-            if("= 0".equals(this.sign[position]))
-                btnAdd.setDisable(true);
-            
+//            
             position++;
                         
             txtConstant.setText("");
@@ -120,14 +132,21 @@ public class FrameBisectionController implements Initializable{
     
     private double f(double num){
         double result = 0;
-        result += (this.constant[0] * Math.pow(num, this.exponent[0]));
-        for(int i = 1; i < this.sign.length; i++){
-            if("+".equals(this.sign[i - 1]))
-                result += (this.constant[i] * Math.pow(num, this.exponent[i]));
-            if("-".equals(this.sign[i - 1]))
-                result += (this.constant[i] * Math.pow(num, this.exponent[i]));
-            if("= 0".equals(this.sign[i - 1]))
-                break;
+//        result += (this.constant[0] * Math.pow(num, this.exponent[0]));
+//        for(int i = 1; i < this.sign.length; i++){
+//            if("+".equals(this.sign[i - 1]))
+//                result += (this.constant[i] * Math.pow(num, this.exponent[i]));
+//            if("-".equals(this.sign[i - 1]))
+//                result += (this.constant[i] * Math.pow(num, this.exponent[i]));
+//            if("= 0".equals(this.sign[i - 1]))
+//                break;
+//        }
+        
+        for(int i = 0; i < constantt.size(); i++){
+            double C = constantt.get(i), E = exponentt.get(i);
+            System.out.println(C+" | "+E);
+            System.out.println((C * Math.pow(num, E)));
+            result += (C * Math.pow(num, E));
         }
         return result;
     }
@@ -163,9 +182,9 @@ public class FrameBisectionController implements Initializable{
     
     private boolean verifyMonomial(){
         boolean state = true;
-        if(txtConstant.getText() == "")
+        if("".equals(txtConstant.getText()))
             state = false;
-        if(txtExponent.getText() == "")
+        if("".equals(txtExponent.getText()))
             state = false;
         if(cboxSign.getSelectionModel().getSelectedIndex() == -1)
             state = false;
@@ -174,13 +193,13 @@ public class FrameBisectionController implements Initializable{
     
     private boolean verifyInterval(){
         boolean state = true;
-        if(btnAdd.isDisable() == false)
+//        if(btnAdd.isDisable() == false)
+//            state = false;
+        if("".equals(txtXa.getText()))
             state = false;
-        if(txtXa.getText() == "")
+        if("".equals(txtXb.getText()))
             state = false;
-        if(txtXb.getText() == "")
-            state = false;
-        if(txtError.getText() == "")
+        if("".equals(txtError.getText()))
             state = false;
         return state;
     }
